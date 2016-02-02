@@ -315,7 +315,7 @@ function loot_table($table, $lootid, $max_percent=100)
 	$groups = array();
 	// Мего запрос :)
 	$rows = $DB->select('
-		SELECT l.ChanceOrQuestChance, l.mincountOrRef, l.maxcount as `d-max`, l.groupid, ?#, i.entry, i.maxcount
+		SELECT l.Chance, l.MinCount, l.MaxCount as `d-max`, l.groupid, ?#, i.Entry, i.MaxCount
 			{, loc.name_loc?d AS `name_loc`}
 		FROM ?# l
 			LEFT JOIN (?_icons a, item_template i) ON l.item=i.entry AND a.id=i.displayid
@@ -408,7 +408,7 @@ function drop($table, $item)
 {
 	global $DB;
 	$rows = $DB->select('
-		SELECT l.ChanceOrQuestChance, l.mincountOrRef, l.maxcount, l.entry
+		SELECT l.Chance, l.MinCount, l.MaxCount, l.Entry
 		FROM ?# l
 		WHERE
 			l.item=?
